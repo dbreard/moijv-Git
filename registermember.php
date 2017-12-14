@@ -131,7 +131,7 @@ if(!empty($_POST))
               
               
               
-              <button type="submit" class="btn btn-primary">Enregistrer un jeu</button>
+              <button type="submit" class="btn btn-primary">Enregistrer un nouveau membre</button>
             </form>
             </div>
             
