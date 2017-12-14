@@ -8,7 +8,7 @@ if(!empty($_POST))
 
 {
 		//préparation de la requete d'insertion d'un jeu dans la BDD
-		$resultat = $pdo->prepare("INSERT INTO game (title, description, image, category, available) VALUES (:title, :description, image, :category, :available)");
+		$resultat = $connexion->prepare("INSERT INTO game (title, description, category, available) VALUES (:title, :description, :category, :available)");
 		
 		
 		$resultat->bindValue(':title', $_POST['title'], PDO::PARAM_STR);

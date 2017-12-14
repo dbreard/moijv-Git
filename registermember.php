@@ -12,7 +12,7 @@ if(!empty($_POST))
 	
 	
 		// Réaliser le script permettant d'inserer un produit dans la table produit (requete préparée)
-		$resultat = $pdo->prepare("INSERT INTO user (username, password, firstname, lastname) VALUES (':username', ':password', ':firstname', ':lastname')");
+		$resultat = $connexion->prepare("INSERT INTO user (username, password, firstname, lastname) VALUES (':username', ':password', ':firstname', ':lastname')");
 		
 		
 		$resultat->bindValue(':username', $_POST['username'], PDO::PARAM_STR);
