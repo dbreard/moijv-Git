@@ -2,30 +2,23 @@
 	
     require_once 'connexion.php';
 
-    //---------- ENREGISTREMENT PRODUIT --------//
-if(!empty($_POST))
-{
-		
-	
-	
-	
-		// Réaliser le script permettant d'inserer un produit dans la table produit (requete préparée)
-		$resultat = $pdo->prepare("INSERT INTO game (title, description, image, category, available) VALUES (:title, :description, :image, :category, :available)");
-		
-		$content .=  '<div class="alert alert-success col-md-8 col-md-offset-2 text-center">Produit enregistré</div>';
-}
-		
+//---------- ENREGISTREMENT game --------//
 
+if(!empty($_POST))
+
+{
+		//préparation de la requete d'insertion d'un jeu dans la BDD
+		$resultat = $pdo->prepare("INSERT INTO game (title, description, image, category, available) VALUES (:title, :description, image, :category, :available)");
+		
 		
 		$resultat->bindValue(':title', $_POST['title'], PDO::PARAM_STR);
 		$resultat->bindValue(':description', $_POST['description'], PDO::PARAM_STR);
-		$resultat->bindValue(':image', $_POST['image'], PDO::PARAM_STR);
+		/*$resultat->bindValue(':image', $_POST['image'], PDO::PARAM_STR);*/
 		$resultat->bindValue(':category', $_POST['category'], PDO::PARAM_STR);
 		$resultat->bindValue(':available', $_POST['available'], PDO::PARAM_STR);
 		
 		
 		$resultat->execute();
-			
 }
 
 ?>
@@ -62,7 +55,7 @@ if(!empty($_POST))
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Accueil
+              <a class="nav-link" href="index.php">Accueil
                 <span class="sr-only">(current)</span>
               </a>
             </li>
@@ -70,8 +63,14 @@ if(!empty($_POST))
               <a class="nav-link" href="#">A propos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Location</a>
+              <a class="nav-link" href="registergame.php">Ajout Game</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="registermember.php">Ajout Membre</a>
+            </li>  
+            <li class="nav-item">
+              <a class="nav-link" href="#">Location</a>
+            </li>  
             <li class="nav-item">
               <a class="nav-link" href="#">Contact</a>
             </li>
@@ -85,22 +84,35 @@ if(!empty($_POST))
         
         <div class="row">
             
-            <form>
+            <div class="col-lg-3">
+
+              <h1 class="my-4">MoiJV</h1>
+              <div class="list-group">
+                <a href="#" class="list-group-item">RPG</a>
+                <a href="#" class="list-group-item">FPS</a>
+                <a href="#" class="list-group-item">Puzzle Game</a>
+              </div>
+
+            </div>
+            
+            <div class="col-lg-9">
+                
+            <form method="post" action="#">
               <div class="form-group">
                 <label for="title">titre</label>
                 <input type="text" class="form-control" id="title" name="title" placeholder="Le titre du Jeu">
               </div>
               <div class="form-group">
-                <label for="description">Descriptioon</label>
+                <label for="description">Description</label>
                 <textarea class="form-control" id="description" name="description" rows="3"></textarea>
               </div>
               <div class="form-group">
                 <label for="image">Pochette</label>
-                <input type="file" class="form-control" id="image" name="image" value=""><br>';
+                <input type="file" class="form-control" id="image" name="image" >
               </div>
               <div class="form-group">
                 <label for="category">Genre</label>
-                <select multiple class="form-control" id="category" name="category">
+                <select class="form-control" id="category" name="category">
                   <option value="RPG">RPG</option>
                   <option value="FPS">FPS</option>
                   <option value="Puzzle game">Puzzle game</option>
@@ -109,9 +121,10 @@ if(!empty($_POST))
               </div>  
               <input type="hidden" value="1" name="available">
               
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary">Enregistrer un jeu</button>
             </form>
             
+            </div>
         </div>
         <!--fin de row-->
         

@@ -12,7 +12,7 @@ if(!empty($_POST))
 	
 	
 		// Réaliser le script permettant d'inserer un produit dans la table produit (requete préparée)
-		$resultat = $pdo->prepare("INSERT INTO user (username, password, firstname, lastname) VALUES (:username, :password, :firstname, :lastname)");
+		$resultat = $pdo->prepare("INSERT INTO user (username, password, firstname, lastname) VALUES (':username', ':password', ':firstname', ':lastname')");
 		
 		
 		$resultat->bindValue(':username', $_POST['username'], PDO::PARAM_STR);
@@ -60,7 +60,7 @@ if(!empty($_POST))
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Accueil
+              <a class="nav-link" href="index.php">Accueil
                 <span class="sr-only">(current)</span>
               </a>
             </li>
@@ -68,8 +68,14 @@ if(!empty($_POST))
               <a class="nav-link" href="#">A propos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Location</a>
+              <a class="nav-link" href="registergame.php">Ajout Game</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="registermember.php">Ajout Membre</a>
+            </li>  
+            <li class="nav-item">
+              <a class="nav-link" href="#">Location</a>
+            </li>  
             <li class="nav-item">
               <a class="nav-link" href="#">Contact</a>
             </li>
@@ -83,7 +89,20 @@ if(!empty($_POST))
         
         <div class="row">
             
-            <form>
+            <div class="col-lg-3">
+
+              <h1 class="my-4">MoiJV</h1>
+              <div class="list-group">
+                <a href="#" class="list-group-item">RPG</a>
+                <a href="#" class="list-group-item">FPS</a>
+                <a href="#" class="list-group-item">Puzzle Game</a>
+              </div>
+
+            </div>
+            
+            <div class="col-lg-9">
+            
+            <form method="post" action="#">
                   <div class="form-group">
                     <label for="username">Pseudo</label>
                     <input type="text" class="form-control" id="username" name="username" placeholder="votre pseudo">
@@ -114,7 +133,7 @@ if(!empty($_POST))
               
               <button type="submit" class="btn btn-primary">Enregistrer un jeu</button>
             </form>
-            
+            </div>
             
         </div>
         <!--fin de row-->
