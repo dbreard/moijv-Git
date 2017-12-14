@@ -12,11 +12,12 @@ if(!empty($_POST))
 	
 	
 		// Réaliser le script permettant d'inserer un produit dans la table produit (requete préparée)
-		$resultat = $connexion->prepare("INSERT INTO user (username, password, firstname, lastname) VALUES (':username', ':password', ':firstname', ':lastname')");
+		$resultat = $connexion->prepare("INSERT INTO user (username, password, email, firstname, lastname) VALUES (:username, :password, :email, :firstname, :lastname)");
 		
 		
 		$resultat->bindValue(':username', $_POST['username'], PDO::PARAM_STR);
 		$resultat->bindValue(':password', $_POST['password'], PDO::PARAM_STR);
+		$resultat->bindValue(':email', $_POST['email'], PDO::PARAM_STR);
 		
 		$resultat->bindValue(':firstname', $_POST['firstname'], PDO::PARAM_STR);
 		$resultat->bindValue(':lastname', $_POST['lastname'], PDO::PARAM_STR);
@@ -71,7 +72,7 @@ if(!empty($_POST))
               <a class="nav-link" href="registergame.php">Ajout Game</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="registermember.php">Ajout Membre</a>
+              <a class="nav-link" href="registermember.php">connexion</a>
             </li>  
             <li class="nav-item">
               <a class="nav-link" href="#">Location</a>
@@ -104,12 +105,12 @@ if(!empty($_POST))
             
             <form method="post" action="#">
                   <div class="form-group">
-                    <label for="username">Pseudo</label>
+                    <label for="pseudo">Pseudo</label>
                     <input type="text" class="form-control" id="username" name="username" placeholder="votre pseudo">
                   </div>
                 
                   <div class="form-group">
-                    <label for="username">Password</label>
+                    <label for="password">Password</label>
                     <input type="text" class="form-control" id="password" name="password" placeholder="votre mot de passe">
                   </div>
                                 
@@ -120,13 +121,13 @@ if(!empty($_POST))
                   </div>
                 
                   <div class="form-group">
-                    <label for="username">Prenom</label>
-                    <input type="text" class="form-control" id="username" name="firstname" placeholder="votre prenom">
+                    <label for="prenom">Prenom</label>
+                    <input type="text" class="form-control" id="firstname" name="firstname" placeholder="votre prenom">
                   </div>
                 
                   <div class="form-group">
-                    <label for="username">nom</label>
-                    <input type="text" class="form-control" id="username" name="lastname" placeholder="votre nom">
+                    <label for="nom">nom</label>
+                    <input type="text" class="form-control" id="lastname" name="lastname" placeholder="votre nom">
                   </div>
               
               

@@ -59,7 +59,7 @@
               <a class="nav-link" href="registergame.php">Ajout Game</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="registermember.php">Ajout Membre</a>
+              <a class="nav-link" href="registermember.php">Connexion</a>
             </li>  
             <li class="nav-item">
               <a class="nav-link" href="#">Location</a>
